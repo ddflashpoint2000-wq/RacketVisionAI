@@ -409,7 +409,7 @@ fun GroundstrokeCameraScreen() {
  val contentValues = ContentValues().apply {put(MediaStore.MediaColumns.DISPLAY_NAME, "${selectedSport.label}_$
 {System.currentTimeMillis()}")
  put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
- }
+                                                }
  val outputOptions = MediaStoreOutputOptions.Builder(
  context.contentResolver,
  MediaStore.Video.Media.EXTERNAL_CONTENT_URI
