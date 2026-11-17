@@ -131,7 +131,8 @@ class GroundstrokeAnalyzer(
  } else {
  pose[hipIdx].x() - pose[wristIdx].x()
  }
- val now = SystemClock.uptimeMillis() var habitWarning: String? = null
+ val now = SystemClock.uptimeMillis() 
+ var habitWarning: String? = null
  var tip = ""
  var score = 80
  when (currentSport) {
@@ -264,8 +265,8 @@ fun GroundstrokeCameraScreen() {
  var isRecording by remember { mutableStateOf(false) }
  var activeRecording by remember { mutableStateOf<Recording?>(null) }
  var videoCapture by remember { mutableStateOf<VideoCapture<Recorder>?>(null) }
- var savedReplayUri by remember { mutableStateOf<Uri?>(null) } val analyzer = remember {
- GroundstrokeAnalyzer(context) { newMetrics -> metrics = newMetrics }
+ var savedReplayUri by remember { mutableStateOf<Uri?>(null) } 
+ val analyzer = remember {GroundstrokeAnalyzer(context) { newMetrics -> metrics = newMetrics }
  }
  LaunchedEffect(selectedSport, isLeftHanded) {
  analyzer.currentSport = selectedSport
@@ -405,8 +406,7 @@ fun GroundstrokeCameraScreen() {
  activeRecording?.stop()
  activeRecording = null
  isRecording = false } else {
- val contentValues = ContentValues().apply {
- put(MediaStore.MediaColumns.DISPLAY_NAME, "${selectedSport.label}_$
+ val contentValues = ContentValues().apply {put(MediaStore.MediaColumns.DISPLAY_NAME, "${selectedSport.label}_$
 {System.currentTimeMillis()}")
  put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
  }
@@ -432,11 +432,11 @@ fun GroundstrokeCameraScreen() {
  modifier = Modifier.padding(bottom = 10.dp)
  ) {
  Text(
- text = if (isRecording) "STOP & REVIEW RALLY" else "RECORD $
-{selectedSport.label.uppercase()}",
- color = if (isRecording) Color.White else Color.Black,
- fontWeight = FontWeight.Bold
- )
+                text = if (isRecording) "STOP & REVIEW RALLY" else "RECORD ${selectedSport.label.uppercase()}",
+                color = if (isRecording) Color.White else Color.Black,
+                fontWeight = FontWeight.Bold
+            )
+
  }
  Card(
  modifier = Modifier.fillMaxWidth(),
